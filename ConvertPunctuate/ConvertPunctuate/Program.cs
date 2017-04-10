@@ -11,7 +11,7 @@ namespace ConvertPunctuate
         static void Main(string[] args)
         {
             ConvertPunctuate cp = new ConvertPunctuate();
-            cp.Run();
+            cp.Run(@"F:\CompareCSV\trunkCSV", @"F:\CompareCSV\outCSV");
         }
     }
 }

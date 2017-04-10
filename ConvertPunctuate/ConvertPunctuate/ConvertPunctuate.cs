@@ -9,55 +9,75 @@ namespace ConvertPunctuate
 {
     class ConvertPunctuate
     {
-        public void Run()
+        public void Run(string strInputDir, string strOutDir)
         {
-            // 读取一个文件.
-            string strFilePath = @"F:\CompareCSV\trunkCSV\achieve.csv";
+            // 批处理多个文件.
+            string[] files = Directory.GetFiles(strInputDir);
+            for (int i = 0; i < files.Length; i++)
+            {
+                HandleEachFile(files[i], strOutDir);
+            }
+        }
 
-            string strOutDir = @"F:\CompareCSV\outCSV";
-
-            List<string> strList = new List<string>();
+        private void HandleEachFile(string strFilePath, string strOutDir)
+        {
+            List<string> strInputList = new List<string>();
 
             // 循环获取每一行
-            StreamReader sr = new StreamReader(strFilePath,Encoding.UTF8);
+            StreamReader sr = new StreamReader(strFilePath, Encoding.UTF8);
             String line;
-            while ((line = sr.ReadLine()) != null) 
+            while ((line = sr.ReadLine()) != null)
             {
-                //Console.WriteLine(line.ToString());
-                strList.Add(line);
+                strInputList.Add(line);
             }
             sr.Close();
 
-            
+            List<string> strOutList = new List<string>();
 
             // 替换标点
+            ConvertPunc(strInputList, strOutList);
 
-            // 写出到另一个目录里
-            FileInfo fi = new FileInfo(strFilePath);
-            String strFileName = fi.Name;
-
+            // 写出文件.
             if (!Directory.Exists(strOutDir))
             {
                 Directory.CreateDirectory(strOutDir);
             }
 
-            string strOutFilePath = string.Format(@"{0}\{1}",strOutDir,strFileName);
+            FileInfo fi = new FileInfo(strFilePath);
+            String fileOutPath = string.Format(@"{0}\{1}", strOutDir, fi.Name);
 
-            Write2File(strOutFilePath, strList);
+            Write2File(fileOutPath, strOutList);
+        }
 
-            Console.WriteLine(strOutFilePath);
+        private void ConvertPunc(List<string> strList, List<string> strOutList)
+        {
+            string strNew = string.Empty;
+            foreach (var item in strList)
+            {
+                strNew = item.Replace(',', '`');
+                strOutList.Add(strNew);
+            }
         }
 
         private void Write2File(string strOutFilePath, List<string> strList)
         {
             FileStream fs = new FileStream(strOutFilePath, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
+            
             //开始写入
-            //sw.Write("Hello World!!!!");
-
-            foreach (var item in strList)
+            string strEachLine = string.Empty;
+            for (int i = 0; i < strList.Count; i++)
             {
-                sw.WriteLine(item);
+                strEachLine = strList[i];
+
+                if (i == strList.Count - 1)
+                {
+                    sw.Write(strEachLine);
+                }
+                else
+                {
+                    sw.WriteLine(strEachLine);
+                }
             }
 
             //清空缓冲区
