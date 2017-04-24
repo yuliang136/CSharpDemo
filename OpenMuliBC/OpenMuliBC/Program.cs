@@ -11,7 +11,7 @@ namespace OpenMuliBC
         static void Main(string[] args)
         {
             OpenMultiBC omb = new OpenMultiBC();
-            omb.Open(@"F:\CompareCSV\trunkCSV", @"F:\CompareCSV\outCSV");
+            omb.Open(@"F:\CompareCSV\En114CSV", @"F:\CompareCSV\outCSV");
         }
     }
 }
