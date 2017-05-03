@@ -16,10 +16,10 @@ namespace CryptoDemo
 
             //CryptoStream cs = new CryptoStream()
 
-            String keys = "yuliangKeyr5";
+            String keys = "hx12345Keyr5";
             byte[] Key = Encoding.Unicode.GetBytes(keys);
 
-            String strIV = "HXIV";
+            String strIV = "HXHX";
             byte[] IV = Encoding.Unicode.GetBytes(strIV);
 
             //String data = "I am yuliang";
