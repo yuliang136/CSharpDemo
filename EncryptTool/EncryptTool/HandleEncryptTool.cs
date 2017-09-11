@@ -13,16 +13,22 @@ namespace EncryptTool
         public string m_InputPath = string.Empty;               // 输入目录路径.
         public string m_OutputPath = string.Empty;              // 输出目录路径.
 
+        public string m_Keys = string.Empty;                    
+        public string m_IV = string.Empty;
+
 
         public void Run(string[] strParams)
         {
             m_InputPath = strParams[1];
-            m_OutputPath = strParams[2];
+            //m_OutputPath = strParams[2];
+
+            m_Keys = strParams[2];
+            m_IV = strParams[3];
 
             //Console.WriteLine(m_InputPath);
             //Console.WriteLine(m_OutputPath);
 
-            EncryptDir(m_InputPath, m_OutputPath);
+            EncryptDir(m_InputPath, m_InputPath);
 
             Console.WriteLine("Handle Done!");
         }
@@ -41,9 +47,13 @@ namespace EncryptTool
 
             foreach (var eachFileInfo in sourceFileInfos)
             {
-                //
-                destPath = Path.Combine(strOutputPath, eachFileInfo.Name);
-                EncryptFile(eachFileInfo.FullName, destPath);
+                // 只处理bytes后缀名的文件.
+                if (eachFileInfo.Extension == ".bytes")
+                {
+                    //
+                    destPath = Path.Combine(strOutputPath, eachFileInfo.Name);
+                    EncryptFile(eachFileInfo.FullName, destPath);
+                }
             }
         }
 
@@ -54,11 +64,11 @@ namespace EncryptTool
         /// <param name="destPath">目标路径</param>
         private void EncryptFile(string sourcePath, string destPath)
         {
-            String keys = "hx12345Keyr5";
-            byte[] Key = Encoding.Unicode.GetBytes(keys);
+            //String keys = "hx12345Keyr5";
+            byte[] Key = Encoding.Unicode.GetBytes(m_Keys);
 
-            String strIV = "HQSH";
-            byte[] IV = Encoding.Unicode.GetBytes(strIV);
+            //String strIV = "HQSH";
+            byte[] IV = Encoding.Unicode.GetBytes(m_IV);
 
             Console.WriteLine("Handle " + sourcePath);
             //Console.WriteLine(destPath);

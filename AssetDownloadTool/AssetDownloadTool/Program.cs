@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EncryptTool
+namespace AssetDownloadTool
 {
     class Program
     {
@@ -12,10 +13,8 @@ namespace EncryptTool
         {
             string[] argsArray = System.Environment.GetCommandLineArgs();
 
-            HandleEncryptTool het = new HandleEncryptTool();
-            het.Run(argsArray);
-
-            //Console.Read();
+            AssetDownloadTool adt = new AssetDownloadTool();
+            adt.Run(argsArray);
         }
     }
 }

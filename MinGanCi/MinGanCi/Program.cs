@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EncryptTool
+namespace MinGanCi
 {
     class Program
     {
@@ -12,10 +12,8 @@ namespace EncryptTool
         {
             string[] argsArray = System.Environment.GetCommandLineArgs();
 
-            HandleEncryptTool het = new HandleEncryptTool();
-            het.Run(argsArray);
-
-            //Console.Read();
+            MinGanCi mgc = new MinGanCi();
+            mgc.Run(argsArray);
         }
     }
 }
