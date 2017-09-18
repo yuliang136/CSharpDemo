@@ -13,6 +13,16 @@ namespace IlluCSharp
 
     class Program
     {
+        long AddValues(long a, long b)
+        {
+            return a + b;
+        }
+
+        int AddValues(long c, long d)
+        {
+            return (int)(c + d);
+        }
+
         static void MyMethod(ref MyClass f1, ref int f2)
         {
             f1.Val = f1.Val + 5;
