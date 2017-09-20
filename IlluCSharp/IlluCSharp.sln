@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThisKeyword", "ThisKeyword\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexerEmployee", "IndexerEmployee\IndexerEmployee.csproj", "{F2838443-7961-4DAD-BA08-A5DA3AE52E8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModifiersOnAccessors", "ModifiersOnAccessors\ModifiersOnAccessors.csproj", "{A314B2C8-F6A5-4B08-9F7C-4C18777A1BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F2838443-7961-4DAD-BA08-A5DA3AE52E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2838443-7961-4DAD-BA08-A5DA3AE52E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2838443-7961-4DAD-BA08-A5DA3AE52E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A314B2C8-F6A5-4B08-9F7C-4C18777A1BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A314B2C8-F6A5-4B08-9F7C-4C18777A1BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A314B2C8-F6A5-4B08-9F7C-4C18777A1BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A314B2C8-F6A5-4B08-9F7C-4C18777A1BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
