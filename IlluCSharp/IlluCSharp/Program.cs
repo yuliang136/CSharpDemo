@@ -18,10 +18,10 @@ namespace IlluCSharp
             return a + b;
         }
 
-        int AddValues(long c, long d)
-        {
-            return (int)(c + d);
-        }
+        //int AddValues(long c, long d)
+        //{
+        //    return (int)(c + d);
+        //}
 
         static void MyMethod(ref MyClass f1, ref int f2)
         {
@@ -30,13 +30,27 @@ namespace IlluCSharp
             Console.WriteLine("f1.Val: {0}, f2: {1}", f1.Val, f2);
         }
 
+        class C1
+        {
+            public int MyValue
+            {
+                //set;
+                get;
+            }
+        }
+
         static void Main(string[] args)
         {
-            MyClass a1 = new MyClass();
-            int a2 = 10;
+            //MyClass a1 = new MyClass();
+            //int a2 = 10;
 
-            MyMethod(ref a1, ref a2);
-            Console.WriteLine("f1.Val:{0}, f2:{1}", a1.Val, a2);
+            //MyMethod(ref a1, ref a2);
+            //Console.WriteLine("f1.Val:{0}, f2:{1}", a1.Val, a2);
+
+            C1 c = new C1();
+            c.MyValue = 6;
+
+            Console.WriteLine("f1.Val:{0}", c.MyValue);
         }
     }
 }
