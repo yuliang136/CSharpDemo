@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefToBase", "RefToBase\RefT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualOverride", "VirtualOverride\VirtualOverride.csproj", "{0482B883-694D-42A7-978B-9EF35768C6AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingMethod", "OverridingMethod\OverridingMethod.csproj", "{244E0EB0-6F94-4AC3-AB5D-5CFD39EFD706}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{0482B883-694D-42A7-978B-9EF35768C6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0482B883-694D-42A7-978B-9EF35768C6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0482B883-694D-42A7-978B-9EF35768C6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244E0EB0-6F94-4AC3-AB5D-5CFD39EFD706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244E0EB0-6F94-4AC3-AB5D-5CFD39EFD706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244E0EB0-6F94-4AC3-AB5D-5CFD39EFD706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244E0EB0-6F94-4AC3-AB5D-5CFD39EFD706}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
