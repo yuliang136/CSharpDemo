@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOther", "Overridi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOtherMember", "OverridingOtherMember\OverridingOtherMember.csproj", "{264E87C5-DCB5-4365-8A51-E53C8E2549AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructorInit", "ConstructorInit\ConstructorInit.csproj", "{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
