@@ -24,7 +24,7 @@ namespace OverridingMethod
 
     class SecondDerived : MyDerivedClass
     {
-        public override void Print()
+        new public void Print()
         {
             Console.WriteLine("This is the second derived class.");
         }
