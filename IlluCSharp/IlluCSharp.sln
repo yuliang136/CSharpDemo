@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingMethod", "Overrid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOther", "OverridingOther\OverridingOther.csproj", "{7EE3FE50-B4F4-473F-9807-D3CACCA43149}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOtherMember", "OverridingOtherMember\OverridingOtherMember.csproj", "{264E87C5-DCB5-4365-8A51-E53C8E2549AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{7EE3FE50-B4F4-473F-9807-D3CACCA43149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE3FE50-B4F4-473F-9807-D3CACCA43149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EE3FE50-B4F4-473F-9807-D3CACCA43149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264E87C5-DCB5-4365-8A51-E53C8E2549AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
