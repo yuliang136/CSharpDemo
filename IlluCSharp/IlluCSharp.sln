@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOtherMember", "Ov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructorInit", "ConstructorInit\ConstructorInit.csproj", "{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritanceAssemblies", "InheritanceAssemblies\InheritanceAssemblies.csproj", "{2BC21D45-D29A-49A0-8004-39BCB2F8B9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLib", "SuperLib\SuperLib.csproj", "{FDEF7687-D520-4BFD-BC32-E4154A9E955D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01FDDEC9-CE06-4307-B464-02BF67ABB6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC21D45-D29A-49A0-8004-39BCB2F8B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC21D45-D29A-49A0-8004-39BCB2F8B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC21D45-D29A-49A0-8004-39BCB2F8B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC21D45-D29A-49A0-8004-39BCB2F8B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDEF7687-D520-4BFD-BC32-E4154A9E955D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEF7687-D520-4BFD-BC32-E4154A9E955D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEF7687-D520-4BFD-BC32-E4154A9E955D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEF7687-D520-4BFD-BC32-E4154A9E955D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

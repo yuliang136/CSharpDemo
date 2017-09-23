@@ -36,11 +36,33 @@ namespace ConstructorInit
 
     }
 
+    class SecondClass : MyClass
+    {
+
+        public SecondClass(string strInput)
+            : this()
+        {
+
+        }
+
+
+        public SecondClass()
+            : base("test")
+        {
+
+        }
+
+
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            MyClass my = new MyClass(2);
+            //MyClass my = new MyClass(2);
+
+            SecondClass sc = new SecondClass();
+
         }
     }
 }
