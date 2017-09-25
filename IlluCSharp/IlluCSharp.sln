@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelationalAndEquiality", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDefinedImplicit", "UserDefinedImplicit\UserDefinedImplicit.csproj", "{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading", "OperatorOverloading\OperatorOverloading.csproj", "{385EC583-AF3D-4CDA-B419-3DA95556ED1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeOfOperator", "TypeOfOperator\TypeOfOperator.csproj", "{3E32E698-3727-45F5-8F33-FCB051EDADA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,14 @@ Global
 		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385EC583-AF3D-4CDA-B419-3DA95556ED1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385EC583-AF3D-4CDA-B419-3DA95556ED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385EC583-AF3D-4CDA-B419-3DA95556ED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385EC583-AF3D-4CDA-B419-3DA95556ED1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

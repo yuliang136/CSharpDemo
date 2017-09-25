@@ -29,12 +29,12 @@ namespace UserDefinedImplicit
         }
 
 
-        public static implicit operator int(LimitedInt li)
+        public static explicit operator int(LimitedInt li)
         {
             return li.TheValue;
         }
 
-        public static implicit operator LimitedInt(int x)
+        public static explicit operator LimitedInt(int x)
         {
             LimitedInt li = new LimitedInt();
             li.TheValue = x;
@@ -46,8 +46,12 @@ namespace UserDefinedImplicit
     {
         static void Main(string[] args)
         {
-            LimitedInt li = 500;
-            int value = li;
+            //LimitedInt li = 500;
+            //int value = li;
+
+            LimitedInt li = (LimitedInt)500;
+
+            int value = (int)li;
 
             Console.WriteLine("li: {0}, value:{1}", li.TheValue, value);
         }
