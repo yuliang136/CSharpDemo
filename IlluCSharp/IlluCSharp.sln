@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelationalAndEquiality", "RelationalAndEquiality\RelationalAndEquiality.csproj", "{65976F4D-745C-4998-8C91-55E36414B145}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDefinedImplicit", "UserDefinedImplicit\UserDefinedImplicit.csproj", "{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{65976F4D-745C-4998-8C91-55E36414B145}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65976F4D-745C-4998-8C91-55E36414B145}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65976F4D-745C-4998-8C91-55E36414B145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C7D966-DDEA-4E26-9524-1F143CBDB8BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
