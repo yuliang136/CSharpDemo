@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading", "Oper
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeOfOperator", "TypeOfOperator\TypeOfOperator.csproj", "{3E32E698-3727-45F5-8F33-FCB051EDADA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GotoStatement", "GotoStatement\GotoStatement.csproj", "{AAA17396-23F8-47B0-B142-2B6E6BE17978}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E32E698-3727-45F5-8F33-FCB051EDADA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA17396-23F8-47B0-B142-2B6E6BE17978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA17396-23F8-47B0-B142-2B6E6BE17978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA17396-23F8-47B0-B142-2B6E6BE17978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA17396-23F8-47B0-B142-2B6E6BE17978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
