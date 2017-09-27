@@ -4,6 +4,12 @@ using System.Reflection;
 
 namespace BaseClassNS
 {
+    public struct Simple
+    {
+        public int x;
+        public int y;
+    }
+
     public class MyBaseClass
     {
         public void PrintMe()

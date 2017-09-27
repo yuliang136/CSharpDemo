@@ -26,6 +26,11 @@ namespace UsesBaseClass
 
             //Console.WriteLine(sq.Area);
 
+            Simple s = new Simple();
+
+
+            Console.WriteLine(s.x);
+
             DerivedClass mdc = new DerivedClass();
 
             mdc.PrintMe();

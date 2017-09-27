@@ -19,10 +19,12 @@ namespace AssigningStruct
             Simple ss1;
             Simple ss2;
 
-            ss1.X = 5;
-            ss1.Y = 10;
+            //ss1.X = 5;
+            //ss1.Y = 10;
 
-            ss2 = ss1;
+            //ss2 = ss1;
+
+            //Console.WriteLine(ss1.X);
 
             Console.WriteLine("here");
         }
