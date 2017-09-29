@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCloneMethod", "TheCloneM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatDelegate", "WhatDelegate\WhatDelegate.csproj", "{EC87A752-3CF0-42C3-88D7-6FD0714D96AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateExample", "DelegateExample\DelegateExample.csproj", "{A56A8873-EE95-4E1E-A7E3-8EB248ED43C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{EC87A752-3CF0-42C3-88D7-6FD0714D96AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC87A752-3CF0-42C3-88D7-6FD0714D96AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC87A752-3CF0-42C3-88D7-6FD0714D96AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56A8873-EE95-4E1E-A7E3-8EB248ED43C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56A8873-EE95-4E1E-A7E3-8EB248ED43C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56A8873-EE95-4E1E-A7E3-8EB248ED43C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56A8873-EE95-4E1E-A7E3-8EB248ED43C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
