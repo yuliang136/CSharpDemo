@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LambdaExpressions
 {
     delegate double MyDel(int par);
-
+    
     class Program
     {
         static void Main(string[] args)
