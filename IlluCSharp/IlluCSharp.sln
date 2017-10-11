@@ -97,6 +97,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefToMultipleInterfaces", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritedMemberAsImplement", "InheritedMemberAsImplement\InheritedMemberAsImplement.csproj", "{DECE9844-863F-43DE-BBCD-1403C7CDDD8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitInterMemImple", "ExplicitInterMemImple\ExplicitInterMemImple.csproj", "{429BA87A-C910-416F-A004-8833984550F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -291,6 +293,10 @@ Global
 		{DECE9844-863F-43DE-BBCD-1403C7CDDD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DECE9844-863F-43DE-BBCD-1403C7CDDD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DECE9844-863F-43DE-BBCD-1403C7CDDD8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429BA87A-C910-416F-A004-8833984550F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429BA87A-C910-416F-A004-8833984550F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429BA87A-C910-416F-A004-8833984550F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429BA87A-C910-416F-A004-8833984550F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
