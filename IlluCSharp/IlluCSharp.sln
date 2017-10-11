@@ -101,6 +101,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplicitInterMemImple", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessingExplicitIMI", "AccessingExplicitIMI\AccessingExplicitIMI.csproj", "{EB72C7FA-56C2-4788-B383-9604B922936B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfacesInheritInterfaces", "InterfacesInheritInterfaces\InterfacesInheritInterfaces.csproj", "{162665D3-6B1B-4C69-ABB1-043FC16B72BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffClassImpleInterface", "DiffClassImpleInterface\DiffClassImpleInterface.csproj", "{99D93966-732F-46FA-961A-F0BD4CA0309B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -303,6 +307,14 @@ Global
 		{EB72C7FA-56C2-4788-B383-9604B922936B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB72C7FA-56C2-4788-B383-9604B922936B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB72C7FA-56C2-4788-B383-9604B922936B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162665D3-6B1B-4C69-ABB1-043FC16B72BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162665D3-6B1B-4C69-ABB1-043FC16B72BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162665D3-6B1B-4C69-ABB1-043FC16B72BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162665D3-6B1B-4C69-ABB1-043FC16B72BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D93966-732F-46FA-961A-F0BD4CA0309B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D93966-732F-46FA-961A-F0BD4CA0309B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D93966-732F-46FA-961A-F0BD4CA0309B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D93966-732F-46FA-961A-F0BD4CA0309B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
