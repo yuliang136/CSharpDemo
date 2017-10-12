@@ -69,15 +69,59 @@ namespace WuChaCheck
 
             //Console.WriteLine("{0:G50}", dd);
 
-            Console.WriteLine("decimal.MinValue = {0}", decimal.MinValue);
-            Console.WriteLine("decimal.MaxValue = {0}", decimal.MaxValue);
+            //Console.WriteLine("decimal.MinValue = {0}", decimal.MinValue);
+            //Console.WriteLine("decimal.MaxValue = {0}", decimal.MaxValue);
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
             //Console.WriteLine("double.MinValue = {0}", double.MinValue);
             //Console.WriteLine("double.MaxValue = {0}", double.MaxValue);
 
-            
+
+            //if (ulong.MaxValue > float.MaxValue)
+            //{
+            //    Console.WriteLine("ulong.MaxValue > float.MaxValue");
+            //}
+
+            //float a = 1.999999f;
+
+            ////decimal a = 1.99999999999999999999999999999999m;
+
+            //int result = (int)a;
+
+            ////int result = Convert.ToInt32(a);
+
+            //Console.WriteLine("result = {0}", a);
+
+
+            ////decimal result = Math.Ceiling(32.0m);
+
+            //decimal result = (decimal)100 / (decimal)300 * (decimal)60;
+
+            ////decimal result = (decimal)100 / (decimal)300;
+
+            //int nResult = Convert.ToInt32(4.5m);
+
+            //Console.WriteLine("result = {0}", nResult);
+
+
+            //float fA = 1f;
+
+            double dA = 1d;
+
+
+            // 数字精度问题
+            //long lA = 1862278065L;
+
+            long lA = 18622780651862278L;
+
+            var varCheck = dA * lA;
+
+            Type trCheck = varCheck.GetType();
+
+            long lWrong = (long)varCheck;
+
+            Console.WriteLine("lWrong = {0}", lWrong);
 
         }
     }
