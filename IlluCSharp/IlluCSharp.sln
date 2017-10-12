@@ -111,6 +111,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverflowCheckingContext", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WuChaCheck", "WuChaCheck\WuChaCheck.csproj", "{76E6F990-BAB0-476A-A9B3-ED058856B65F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefConversions", "RefConversions\RefConversions.csproj", "{BACCB3FE-B3AF-45A2-8D73-784F4DBE654D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -333,6 +335,10 @@ Global
 		{76E6F990-BAB0-476A-A9B3-ED058856B65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E6F990-BAB0-476A-A9B3-ED058856B65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E6F990-BAB0-476A-A9B3-ED058856B65F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACCB3FE-B3AF-45A2-8D73-784F4DBE654D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACCB3FE-B3AF-45A2-8D73-784F4DBE654D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACCB3FE-B3AF-45A2-8D73-784F4DBE654D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACCB3FE-B3AF-45A2-8D73-784F4DBE654D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
