@@ -123,6 +123,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsOperator", "IsOperator\Is
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackExamGenerics", "StackExamGenerics\StackExamGenerics.csproj", "{372A30E7-F7FA-4F1F-8BEE-B0E3E7C3636F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamGenericMethod", "ExamGenericMethod\ExamGenericMethod.csproj", "{A0F6B008-94AF-4EE0-B250-7FAE0309FA00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtenMethodsGenericClasses", "ExtenMethodsGenericClasses\ExtenMethodsGenericClasses.csproj", "{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -369,6 +373,14 @@ Global
 		{372A30E7-F7FA-4F1F-8BEE-B0E3E7C3636F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372A30E7-F7FA-4F1F-8BEE-B0E3E7C3636F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{372A30E7-F7FA-4F1F-8BEE-B0E3E7C3636F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F6B008-94AF-4EE0-B250-7FAE0309FA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F6B008-94AF-4EE0-B250-7FAE0309FA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F6B008-94AF-4EE0-B250-7FAE0309FA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F6B008-94AF-4EE0-B250-7FAE0309FA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
