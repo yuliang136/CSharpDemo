@@ -127,6 +127,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamGenericMethod", "ExamGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtenMethodsGenericClasses", "ExtenMethodsGenericClasses\ExtenMethodsGenericClasses.csproj", "{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericInterfaces", "GenericInterfaces\GenericInterfaces.csproj", "{E99898AF-640B-4517-B433-A88AF3578F39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Covariance", "Covariance\Covariance.csproj", "{352A6525-D8FE-48B8-9782-49A0779C4414}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -381,6 +385,14 @@ Global
 		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{659DE912-85E8-4ED1-B35D-5BD31DF4FBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99898AF-640B-4517-B433-A88AF3578F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99898AF-640B-4517-B433-A88AF3578F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99898AF-640B-4517-B433-A88AF3578F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99898AF-640B-4517-B433-A88AF3578F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352A6525-D8FE-48B8-9782-49A0779C4414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352A6525-D8FE-48B8-9782-49A0779C4414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352A6525-D8FE-48B8-9782-49A0779C4414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352A6525-D8FE-48B8-9782-49A0779C4414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
