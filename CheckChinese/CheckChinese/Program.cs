@@ -14,7 +14,7 @@ namespace CheckChinese
         {
             Console.WriteLine("Check Chinese");
 
-            DirectoryInfo di = new DirectoryInfo(@"G:\GitBranches\CSharpDemo\CheckChinese\CheckChinese\bin\Debug\38918\StreamingAssets");
+            DirectoryInfo di = new DirectoryInfo(@"G:\Apks\0710\11\38918\StreamingAssets");
 
             FileInfo[] files = di.GetFiles();
 
