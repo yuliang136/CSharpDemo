@@ -93,6 +93,12 @@ namespace FindRefsMulti
                     {
                         // 这里可能应该加入更复杂的结构.
                         findResult.Add(eachDepInfo.strFileName);
+
+                        // 进行Debug输出.
+                        string strShowTmp = string.Format("{0} refs {1}", eachDepInfo.strFileName,
+                            eachCheckInfo.strFileName);
+                        Console.WriteLine(strShowTmp);
+
                     }
                 }
             }
@@ -311,7 +317,14 @@ namespace FindRefsMulti
             // m_handleGuid = CommonUtils.GetGuidFromFile(m_filePath);
             // Console.WriteLine("Check Here");
             // 自定义线程个数 12-24个 测试花费时间.
-            int nThreadNum = 1;
+            int nThreadNum = 200;
+
+            // 这里可能会有点异常.
+            // 就是出现Check File不够分的情况.
+            // 这里感觉好像有点问题.  CheckFile是不能分出去的.
+            // Deps 分出去后 每个线程里都要处理所有Check File.
+
+
             int cutDepNum = m_stackDepFileInfos.Count / nThreadNum;
             int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
 
@@ -324,7 +337,13 @@ namespace FindRefsMulti
                 bool isLastThread = (i == (nThreadNum - 1));
 
                 // 进行切割.
-                threadHandleInfo.inputCheckData = CutCheckTasks(m_stackCheckFileInfos, cutCheckNum, isLastThread);
+                // threadHandleInfo.inputCheckData = CutCheckTasks(m_stackCheckFileInfos, cutCheckNum, isLastThread);
+
+                // 这里做个深度拷贝 为每个线程准备一个额外的inputCheckData.
+                threadHandleInfo.inputCheckData = m_stackCheckFileInfos.ToList();
+
+
+
                 threadHandleInfo.outputData = m_lstResults;
                 threadHandleInfo.inputDepData = CutDepTasks(m_stackDepFileInfos, cutDepNum, isLastThread);
                 eachThread.Start(threadHandleInfo);
