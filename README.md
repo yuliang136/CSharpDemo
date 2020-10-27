@@ -2,3 +2,4 @@
 CSharpDemo
 
 ImageInfoCheck 检查图片格式 区分透明通道和非透明通道
+FindRefsMulti Unity使用多线程来查找依赖资源并进行输出
