@@ -85,9 +85,7 @@ namespace FindRefsMulti
             {
                 // 记录处理的每一个文件
                 nHandleCheckIndex++;
-
                 // Console.WriteLine("Handle Check Index = " + nHandleCheckIndex.ToString());
-
 
                 foreach (var eachDepInfo in threadHandleInfo.inputDepData)
                 {
@@ -176,17 +174,111 @@ namespace FindRefsMulti
             // 开辟线程. 为不同线程分配不同任务.
             // 如何判断其他线程执行完毕. 切割任务.
             // 字典保存文件名和对应的文件字符串内容.
-            List<string> withExtensions = new List<string>() { ".prefab", ".unity", ".mat", ".asset", ".anim", ".controller" };
+
+            // 目前认为 只有这6种资源才有可能包含其他资源.
+            // ".prefab", ".unity", ".mat", ".asset", ".anim", ".controller"
+
+
+            List<string> withExtensions = new List<string>()
+            {
+                ".prefab",
+                ".unity",
+                ".mat",
+                ".asset",
+                ".anim",
+                ".controller",
+                ".guiskin",
+                ".mixer",
+                ".fontsettings",
+                ".flare",
+                ".playable",
+                ".overrideController",
+            };
             string[] findFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories)
                 .Where(s => withExtensions.Contains(Path.GetExtension(s).ToLower())).ToArray();
-            // 读取文件从硬盘到内存.
-            foreach (var eachFindFile in findFiles)
-            {
-                CustomFileInfoBeenDep customFileInfoBeenDep = new CustomFileInfoBeenDep();
-                customFileInfoBeenDep.strFileName = eachFindFile;
-                customFileInfoBeenDep.strFileContent = File.ReadAllText(eachFindFile);
-                m_stackDepFileInfos.Push(customFileInfoBeenDep);
-            }
+
+            // 使用全文件测试.
+            // string[] allFindFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories);
+            // List<string> findFiles = new List<string>();
+
+            // // 先筛选出Dep项
+            // List<string> withOutExtensions = new List<string>()
+            // {
+            //     ".png",".gif",".tif",".jpg",".psd",
+            //     ".cginc",".shader",
+            //     ".ttf",".TTF",".fnt",
+            //     ".otf",
+            //     ".mp3",".ogg",".aiff",".wav",
+            //     ".proto",".sln",
+            //     ".mm",".h",".m",".a",
+            //     ".meta",".XML",".md",
+            //     ".cs",".dll",".pfx",".jslib",
+            //     ".json",".txt",".xml",".info",
+            //     ".keystore",".plist",
+            //     ".unity3d",".manifest",
+            //     ".cs",".lua",".sh",".mdb",".csproj",".sln",
+            //     ".exe",".py",
+            //     ".jar",".aar",".gradle",
+            //     ".DISABLED",".pri",".winmd",".bundle",
+            //     ".bat",".podspec",".properties",".projmods",
+            //     ".cer",".template",".so",
+            //     ".exr",".bak",".proto",
+            //     ".FBX",".fbx",".mingw",".bytes",".spine",
+            //     ".html",".css",
+            //     ".pom",".srcaar",".skel",
+            //     ".sai2",".strings",".java",
+            // };
+
+            // foreach (var eachFile in allFindFiles)
+            // {
+            //     // 通过后缀名进行筛选.
+            //     string strExt = Path.GetExtension(eachFile);
+            //
+            //     if (strExt == string.Empty || strExt == "")
+            //     {
+            //         continue;
+            //     }
+            //
+            //     if (withOutExtensions.Contains(strExt))
+            //     {
+            //         // 如果包含 则不进行加入.
+            //     }
+            //     else
+            //     {
+            //         // 如果不包含 才加入.
+            //         findFiles.Add(eachFile);
+            //     }
+            //
+            // }
+            //
+            //
+            // // 过滤掉之后 再看还有哪些有效的文件.
+            //
+            // HashSet<string> hashSetExts = new HashSet<string>();
+            // foreach (var eachFileName in findFiles)
+            // {
+            //     string strExt = Path.GetExtension(eachFileName);
+            //
+            //     if (!hashSetExts.Contains(strExt))
+            //     {
+            //         hashSetExts.Add(strExt);
+            //     }
+            //
+            // }
+            //
+            //
+            // // 输出全部的Dep后缀名.
+            // foreach (var eachExit in hashSetExts)
+            // {
+            //     Console.WriteLine(eachExit);
+            // }
+
+
+
+            // 对m_findFilesPath做过滤.
+            // 某些文件不可能是会被其他地方引用到.
+            // 这里可能不方便使用是否有GUID来判断
+
 
 
             foreach (var eachCheckFile in m_findFilesPath)
@@ -197,12 +289,29 @@ namespace FindRefsMulti
                 m_stackCheckFileInfos.Push(customFileInfoCheckFile);
             }
 
+
+
+            // 读取文件从硬盘到内存. 这里如果不做过滤 会把所有文件都读入.
+            foreach (var eachFindFile in findFiles)
+            {
+                CustomFileInfoBeenDep customFileInfoBeenDep = new CustomFileInfoBeenDep();
+                customFileInfoBeenDep.strFileName = eachFindFile;
+                customFileInfoBeenDep.strFileContent = File.ReadAllText(eachFindFile);
+                m_stackDepFileInfos.Push(customFileInfoBeenDep);
+            }
+
+
+
+
+
+
+
             
             // 获得单个Guid
             // m_handleGuid = CommonUtils.GetGuidFromFile(m_filePath);
             // Console.WriteLine("Check Here");
             // 自定义线程个数 12-24个 测试花费时间.
-            int nThreadNum = 200;
+            int nThreadNum = 1;
             int cutDepNum = m_stackDepFileInfos.Count / nThreadNum;
             int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
 
