@@ -14,13 +14,12 @@ namespace FindRefsMulti
             StopWatchUtils.WatchStopInit();
             // 取得Assets目录.
             string strApplicationDataPath = @"C:\gitWorks\gitbranch_ios_pack\Assets";
-            string[] testTexs = Directory.GetFiles(strApplicationDataPath, "*.lua", SearchOption.AllDirectories);
-            List<string> totalLst = testTexs.ToList();
+            string[] checkFiles = Directory.GetFiles(strApplicationDataPath, "*.*", SearchOption.AllDirectories);
+            List<string> totalLst = checkFiles.ToList();
             
             
             FindRefWithMulti findRefWithMulti = new FindRefWithMulti(strApplicationDataPath, totalLst);
             findRefWithMulti.Run();
-            // Console.WriteLine("Check Here");
             StopWatchUtils.WatchStopOnceEnd("FindRefWithMulti Handle Done!");
 
 

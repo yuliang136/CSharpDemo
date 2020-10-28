@@ -27,13 +27,6 @@ namespace FindRefsMulti
         // 要Check的文件集合
         public Stack<CustomFileInfoCheckFile> m_stackCheckFileInfos = new Stack<CustomFileInfoCheckFile>();
 
-
-        // public FindRefWithMulti(string strAssetPath, string strFilePath)
-        // {
-        //     m_assetPath = strAssetPath;
-        //     m_filePath = strFilePath;
-        // }
-
         public FindRefWithMulti(string strAssetPath, List<string> strFindFilesPath)
         {
             m_assetPath = strAssetPath;
@@ -62,13 +55,9 @@ namespace FindRefsMulti
         public class ThreadHandleInfo
         {
             public string threadName = string.Empty;
-            // public Dictionary<string, string> inputDepData = new Dictionary<string, string>(); // 进行任务分配.
-            // public string inputGuid = string.Empty; // 输入的Guid
-
             public List<CustomFileInfoCheckFile> inputCheckData; // 输入Check项
             public List<CustomFileInfoBeenDep> inputDepData; // 输入被依赖项
             public List<string> outputData; // 共用的一份地址 需要加锁处理
-            // public int nWaitTime;
         }
 
 
@@ -185,7 +174,7 @@ namespace FindRefsMulti
             // ".prefab", ".unity", ".mat", ".asset", ".anim", ".controller"
 
 
-            List<string> withExtensions = new List<string>()
+            List<string> lstDepWithExt = new List<string>()
             {
                 ".prefab",
                 ".unity",
@@ -201,7 +190,55 @@ namespace FindRefsMulti
                 ".overrideController",
             };
             string[] findFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories)
-                .Where(s => withExtensions.Contains(Path.GetExtension(s).ToLower())).ToArray();
+                .Where(s => lstDepWithExt.Contains(Path.GetExtension(s).ToLower())).ToArray();
+
+
+            // 对Check资源再进行一个筛选
+            List<string> lstCheckWithExt = new List<string>()
+            {
+                ".controller",
+                ".asset",
+                ".cs",
+                ".json",
+                ".dll",
+                ".txt",
+
+                ".png",
+                ".guiskin",
+                ".prefab",
+                ".mixer",
+                ".fontsettings",
+                ".mat",
+
+                ".TTF",
+                ".ttf",
+                ".psd",
+                ".otf",
+                ".shader",
+                ".anim",
+
+                ".ogg",
+                ".cginc",
+                ".FBX",
+                ".jpg",
+                ".tif",
+                ".flare",
+
+                ".fbx",
+                ".mp3",
+                ".playable",
+                ".gif",
+                ".aiff",
+                ".wav",
+
+                ".overrideController",
+                ".bytes",
+                ".spine",
+            };
+
+            m_findFilesPath = m_findFilesPath.Where(s => lstCheckWithExt.Contains(Path.GetExtension(s).ToLower())).ToList();
+
+            Console.WriteLine("Test Here");
 
             // 使用全文件测试.
             // string[] allFindFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories);
