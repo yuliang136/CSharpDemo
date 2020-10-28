@@ -61,16 +61,11 @@ namespace FindRefsMulti
         /// <returns></returns>
         public static string GetAssetNameFromPath(string fileName, string strDataPath)
         {
-            string strRtn = string.Empty;
-
             string strUnityFS = windows2Unity_FS(fileName).ToLower();
 
             string strAssetPath = strUnityFS.Replace(strDataPath.ToLower(), "assets");
 
             return strAssetPath;
-
-
-            return strRtn;
         }
 
         #endregion

@@ -14,7 +14,7 @@ namespace FindRefsMulti
             StopWatchUtils.WatchStopInit();
             // 取得Assets目录.
             string strApplicationDataPath = @"C:\gitWorks\gitbranch_ios_pack\Assets";
-            string[] checkFiles = Directory.GetFiles(strApplicationDataPath, "*.anim", SearchOption.AllDirectories);
+            string[] checkFiles = Directory.GetFiles(strApplicationDataPath, "*.*", SearchOption.AllDirectories);
             List<string> totalLst = checkFiles.ToList();
             
             
@@ -25,7 +25,7 @@ namespace FindRefsMulti
 
 
             // AnalyzeTools.CheckFileExts(strApplicationDataPath);
-            // Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }

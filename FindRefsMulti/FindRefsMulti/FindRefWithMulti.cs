@@ -13,7 +13,6 @@ namespace FindRefsMulti
     public class FindRefWithMulti
     {
         private string m_assetPath;
-        private string m_filePath;
         private List<string> m_findFilesPath;
 
         // 设置一个内存锁.
@@ -86,23 +85,25 @@ namespace FindRefsMulti
             // 输出结果
             Dictionary<string,List<string>> resultDic = new Dictionary<string, List<string>>();
 
-            int nHandleCheckIndex = 0;
+            // int nCheckFileNum = threadData.inputCheckData.Count;
+            // int nHandleCheckIndex = 0;
+            // string strShowProgress = string.Empty;
 
             // 这个inputCheckData没有做切割.
             foreach (var eachCheckInfo in threadData.inputCheckData)
             {
                 // 记录处理的每一个文件
-                nHandleCheckIndex++;
-                // Console.WriteLine("Handle Check Index = " + nHandleCheckIndex.ToString());
+                // nHandleCheckIndex++;
+
+                // strShowProgress = string.Format("Thread {0}  {1}/{2}", threadData.threadName,
+                //                         nHandleCheckIndex,
+                //                         nCheckFileNum);
+                // Console.WriteLine(strShowProgress);
 
                 foreach (var eachDepInfo in threadData.inputDepData)
                 {
                     if (Regex.IsMatch(eachDepInfo.strFileContent, eachCheckInfo.strGuid))
                     {
-
-                        // 这里的key做下处理.
-
-
                         if (resultDic.ContainsKey(eachCheckInfo.strFileName))
                         {
                             // 如果包含Key 应该已经有了List<string>
@@ -113,13 +114,6 @@ namespace FindRefsMulti
                             resultDic[eachCheckInfo.strFileName] = new List<string>();
                             resultDic[eachCheckInfo.strFileName].Add(eachDepInfo.strFileName);
                         }
-
-
-                        // // 进行Debug输出.
-                        // string strShowTmp = string.Format("{0} refs {1}", eachDepInfo.strFileName,
-                        //     eachCheckInfo.strFileName);
-                        // Console.WriteLine(strShowTmp);
-
                     }
                 }
             }
@@ -294,7 +288,7 @@ namespace FindRefsMulti
 
             m_findFilesPath = m_findFilesPath.Where(s => lstCheckWithExt.Contains(Path.GetExtension(s).ToLower())).ToList();
 
-            Console.WriteLine("Test Here");
+            // Console.WriteLine("Test Here");
 
             // 使用全文件测试.
             // string[] allFindFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories);
@@ -389,7 +383,6 @@ namespace FindRefsMulti
             }
 
 
-
             // 读取文件从硬盘到内存. 这里如果不做过滤 会把所有文件都读入.
             foreach (var eachFindFile in findFiles)
             {
@@ -400,24 +393,12 @@ namespace FindRefsMulti
             }
 
 
-
-
-
-
-
             
             // 获得单个Guid
             // m_handleGuid = CommonUtils.GetGuidFromFile(m_filePath);
             // Console.WriteLine("Check Here");
             // 自定义线程个数 12-24个 测试花费时间.
             int nThreadNum = 200;
-
-            // 这里可能会有点异常.
-            // 就是出现Check File不够分的情况.
-            // 这里感觉好像有点问题.  CheckFile是不能分出去的.
-            // Deps 分出去后 每个线程里都要处理所有Check File.
-
-
             int cutDepNum = m_stackDepFileInfos.Count / nThreadNum;
             // int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
 
@@ -448,7 +429,6 @@ namespace FindRefsMulti
 
 
             // 打印出结果.
-
             // m_lstResults
             Console.WriteLine("Check Result");
 
