@@ -88,3 +88,31 @@ namespace FindRefsMulti
 
     }
 }
+
+// // 先筛选出Dep项
+// List<string> withOutExtensions = new List<string>()
+// {
+//     ".png",".gif",".tif",".jpg",".psd",
+//     ".cginc",".shader",
+//     ".ttf",".TTF",".fnt",
+//     ".otf",
+//     ".mp3",".ogg",".aiff",".wav",
+//     ".proto",".sln",
+//     ".mm",".h",".m",".a",
+//     ".meta",".XML",".md",
+//     ".cs",".dll",".pfx",".jslib",
+//     ".json",".txt",".xml",".info",
+//     ".keystore",".plist",
+//     ".unity3d",".manifest",
+//     ".cs",".lua",".sh",".mdb",".csproj",".sln",
+//     ".exe",".py",
+//     ".jar",".aar",".gradle",
+//     ".DISABLED",".pri",".winmd",".bundle",
+//     ".bat",".podspec",".properties",".projmods",
+//     ".cer",".template",".so",
+//     ".exr",".bak",".proto",
+//     ".FBX",".fbx",".mingw",".bytes",".spine",
+//     ".html",".css",
+//     ".pom",".srcaar",".skel",
+//     ".sai2",".strings",".java",
+// };

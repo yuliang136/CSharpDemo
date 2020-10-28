@@ -12,8 +12,11 @@ namespace FindRefsMulti
 {
     public class FindRefWithMulti
     {
-        private string m_assetPath;
-        private List<string> m_findFilesPath;
+        private string m_DepFilesPath;              // 指定的依赖文件查找目录.
+        private List<string> m_findFilesPath;       // 所有需要Check的文件List.
+        private string m_outputPath;                // 输出文件路径
+        private string m_unityDataPath;             // 固定的unityDataPath目录.
+        private int m_ThreadNum;                    // 开辟的线程数
 
         // 设置一个内存锁.
         private readonly object locker = new object();
@@ -38,10 +41,13 @@ namespace FindRefsMulti
             public Dictionary<string, List<string>> dicAssetFileRefs = new Dictionary<string, List<string>>();
         }
 
-        public FindRefWithMulti(string strAssetPath, List<string> strFindFilesPath)
+        public FindRefWithMulti(string strDepFilesPath, List<string> strFindFilesPath, string strOutputPath, string UnityDataPath, int nThreadNum)
         {
-            m_assetPath = strAssetPath;
+            m_DepFilesPath = strDepFilesPath;
             m_findFilesPath = strFindFilesPath; // 传入一个List输入
+            m_outputPath = strOutputPath; // 传入输出文件的名字
+            m_unityDataPath = CommonUtils.windows2Unity_FS(UnityDataPath); // Unity的固定Asset目录
+            m_ThreadNum = nThreadNum;
         }
 
         /// <summary>
@@ -131,8 +137,7 @@ namespace FindRefsMulti
                     // threadData.outputData.Add(eachOutput);
 
                     // 判断check项在outputData里是否存在.
-                    string strSaveKey = CommonUtils.GetAssetNameFromPath(threadResultItem.Key, 
-                        CommonUtils.windows2Unity_FS(m_assetPath));
+                    string strSaveKey = CommonUtils.GetAssetNameFromPath(threadResultItem.Key, m_unityDataPath);
 
                     if (outputData.ContainsKey(threadResultItem.Key))
                     {
@@ -145,8 +150,7 @@ namespace FindRefsMulti
                     foreach (var eachDep in threadResultItem.Value)
                     {
                         // 改变eachDep为一个Asset的值.
-                        string strSaveDep = CommonUtils.GetAssetNameFromPath(eachDep, 
-                            CommonUtils.windows2Unity_FS(m_assetPath));
+                        string strSaveDep = CommonUtils.GetAssetNameFromPath(eachDep, m_unityDataPath);
                         outputData[strSaveKey].Add(strSaveDep);
                     }
 
@@ -239,7 +243,7 @@ namespace FindRefsMulti
                 ".playable",
                 ".overrideController",
             };
-            string[] findFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories)
+            string[] findFiles = Directory.GetFiles(m_DepFilesPath, "*.*", SearchOption.AllDirectories)
                 .Where(s => lstDepWithExt.Contains(Path.GetExtension(s).ToLower())).ToArray();
 
 
@@ -288,92 +292,6 @@ namespace FindRefsMulti
 
             m_findFilesPath = m_findFilesPath.Where(s => lstCheckWithExt.Contains(Path.GetExtension(s).ToLower())).ToList();
 
-            // Console.WriteLine("Test Here");
-
-            // 使用全文件测试.
-            // string[] allFindFiles = Directory.GetFiles(m_assetPath, "*.*", SearchOption.AllDirectories);
-            // List<string> findFiles = new List<string>();
-
-            // // 先筛选出Dep项
-            // List<string> withOutExtensions = new List<string>()
-            // {
-            //     ".png",".gif",".tif",".jpg",".psd",
-            //     ".cginc",".shader",
-            //     ".ttf",".TTF",".fnt",
-            //     ".otf",
-            //     ".mp3",".ogg",".aiff",".wav",
-            //     ".proto",".sln",
-            //     ".mm",".h",".m",".a",
-            //     ".meta",".XML",".md",
-            //     ".cs",".dll",".pfx",".jslib",
-            //     ".json",".txt",".xml",".info",
-            //     ".keystore",".plist",
-            //     ".unity3d",".manifest",
-            //     ".cs",".lua",".sh",".mdb",".csproj",".sln",
-            //     ".exe",".py",
-            //     ".jar",".aar",".gradle",
-            //     ".DISABLED",".pri",".winmd",".bundle",
-            //     ".bat",".podspec",".properties",".projmods",
-            //     ".cer",".template",".so",
-            //     ".exr",".bak",".proto",
-            //     ".FBX",".fbx",".mingw",".bytes",".spine",
-            //     ".html",".css",
-            //     ".pom",".srcaar",".skel",
-            //     ".sai2",".strings",".java",
-            // };
-
-            // foreach (var eachFile in allFindFiles)
-            // {
-            //     // 通过后缀名进行筛选.
-            //     string strExt = Path.GetExtension(eachFile);
-            //
-            //     if (strExt == string.Empty || strExt == "")
-            //     {
-            //         continue;
-            //     }
-            //
-            //     if (withOutExtensions.Contains(strExt))
-            //     {
-            //         // 如果包含 则不进行加入.
-            //     }
-            //     else
-            //     {
-            //         // 如果不包含 才加入.
-            //         findFiles.Add(eachFile);
-            //     }
-            //
-            // }
-            //
-            //
-            // // 过滤掉之后 再看还有哪些有效的文件.
-            //
-            // HashSet<string> hashSetExts = new HashSet<string>();
-            // foreach (var eachFileName in findFiles)
-            // {
-            //     string strExt = Path.GetExtension(eachFileName);
-            //
-            //     if (!hashSetExts.Contains(strExt))
-            //     {
-            //         hashSetExts.Add(strExt);
-            //     }
-            //
-            // }
-            //
-            //
-            // // 输出全部的Dep后缀名.
-            // foreach (var eachExit in hashSetExts)
-            // {
-            //     Console.WriteLine(eachExit);
-            // }
-
-
-
-            // 对m_findFilesPath做过滤.
-            // 某些文件不可能是会被其他地方引用到.
-            // 这里可能不方便使用是否有GUID来判断
-
-
-
             foreach (var eachCheckFile in m_findFilesPath)
             {
                 CustomFileInfoCheckFile customFileInfoCheckFile = new CustomFileInfoCheckFile();
@@ -398,7 +316,7 @@ namespace FindRefsMulti
             // m_handleGuid = CommonUtils.GetGuidFromFile(m_filePath);
             // Console.WriteLine("Check Here");
             // 自定义线程个数 12-24个 测试花费时间.
-            int nThreadNum = 200;
+            int nThreadNum = m_ThreadNum;
             int cutDepNum = m_stackDepFileInfos.Count / nThreadNum;
             // int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
 
@@ -430,12 +348,12 @@ namespace FindRefsMulti
 
             // 打印出结果.
             // m_lstResults
-            Console.WriteLine("Check Result");
+            // Console.WriteLine("Check Result");
 
             // 直接把对象序列化为字符串.
 
             string strResult = JsonConvert.SerializeObject(m_assetFileRef.dicAssetFileRefs, Formatting.Indented);
-            CommonUtils.WriteFile(@"D:\fileDepsJson.json", strResult);
+            CommonUtils.WriteFile(m_outputPath, strResult);
 
 
 
