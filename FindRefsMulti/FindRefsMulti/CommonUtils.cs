@@ -7,6 +7,8 @@ namespace FindRefsMulti
 {
     public static class CommonUtils
     {
+        #region Unity资源操作
+
         /// <summary>
         /// 快速找到guid 不用使用Unity内部方法.
         /// </summary>
@@ -46,5 +48,48 @@ namespace FindRefsMulti
 
             return strRtn;
         }
+
+        public static string windows2Unity_FS(string fileName)
+        {
+            return fileName.Replace("\\", "/");
+        }
+
+        /// <summary>
+        /// 从filePath切换到Asset下的名字
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static string GetAssetNameFromPath(string fileName, string strDataPath)
+        {
+            string strRtn = string.Empty;
+
+            string strUnityFS = windows2Unity_FS(fileName).ToLower();
+
+            string strAssetPath = strUnityFS.Replace(strDataPath.ToLower(), "assets");
+
+            return strAssetPath;
+
+
+            return strRtn;
+        }
+
+        #endregion
+
+        #region 文件操作
+
+        public static void WriteFile(string strFileName, string strContent)
+        {
+            FileStream fs = new FileStream(strFileName, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+
+            sw.WriteLine(strContent);
+
+            sw.Flush();
+            sw.Close();
+            fs.Close();
+        }
+
+        #endregion
+
     }
 }

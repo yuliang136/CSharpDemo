@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace FindRefsMulti
 {
@@ -19,13 +20,24 @@ namespace FindRefsMulti
         private readonly object locker = new object();
         private List<Thread> lstThreads = new List<Thread>();
 
-        public List<string> m_lstResults = new List<string>();
+        // 需要汇总的数据
+        public AssetFileRef m_assetFileRef = new AssetFileRef();
 
         // 被依赖项的文件集合
         public Stack<CustomFileInfoBeenDep> m_stackDepFileInfos = new Stack<CustomFileInfoBeenDep>();
 
         // 要Check的文件集合
         public Stack<CustomFileInfoCheckFile> m_stackCheckFileInfos = new Stack<CustomFileInfoCheckFile>();
+
+        /// <summary>
+        /// 为TextureRef添加序列化属性.
+        /// 序列化为一个字符串 然后写出来.
+        /// </summary>
+        [Serializable]
+        public class AssetFileRef
+        {
+            public Dictionary<string, List<string>> dicAssetFileRefs = new Dictionary<string, List<string>>();
+        }
 
         public FindRefWithMulti(string strAssetPath, List<string> strFindFilesPath)
         {
@@ -57,36 +69,56 @@ namespace FindRefsMulti
             public string threadName = string.Empty;
             public List<CustomFileInfoCheckFile> inputCheckData; // 输入Check项
             public List<CustomFileInfoBeenDep> inputDepData; // 输入被依赖项
-            public List<string> outputData; // 共用的一份地址 需要加锁处理
+            public Dictionary<string, List<string>> dicFileDeps = new Dictionary<string, List<string>>(); // 共用的一份地址 需要加锁处理
         }
 
 
         public void TheadEachRun(object obj)
         {
             // 进行拆箱.
-            ThreadHandleInfo threadHandleInfo = obj as ThreadHandleInfo;
+            ThreadHandleInfo threadData = obj as ThreadHandleInfo;
 
-            List<string> findResult = new List<string>();
+            // 这里写的输出结果有问题.
+            // 应该使用<string, List<string>>后面的是依赖项.
+            // 每个线程有个结果 最终有个汇总结果.
+            // List<string> findResult = new List<string>();
+
+            // 输出结果
+            Dictionary<string,List<string>> resultDic = new Dictionary<string, List<string>>();
+
             int nHandleCheckIndex = 0;
-            // int nHandleDepIndex = 0;
 
-            foreach (var eachCheckInfo in threadHandleInfo.inputCheckData)
+            // 这个inputCheckData没有做切割.
+            foreach (var eachCheckInfo in threadData.inputCheckData)
             {
                 // 记录处理的每一个文件
                 nHandleCheckIndex++;
                 // Console.WriteLine("Handle Check Index = " + nHandleCheckIndex.ToString());
 
-                foreach (var eachDepInfo in threadHandleInfo.inputDepData)
+                foreach (var eachDepInfo in threadData.inputDepData)
                 {
                     if (Regex.IsMatch(eachDepInfo.strFileContent, eachCheckInfo.strGuid))
                     {
-                        // 这里可能应该加入更复杂的结构.
-                        findResult.Add(eachDepInfo.strFileName);
 
-                        // 进行Debug输出.
-                        string strShowTmp = string.Format("{0} refs {1}", eachDepInfo.strFileName,
-                            eachCheckInfo.strFileName);
-                        Console.WriteLine(strShowTmp);
+                        // 这里的key做下处理.
+
+
+                        if (resultDic.ContainsKey(eachCheckInfo.strFileName))
+                        {
+                            // 如果包含Key 应该已经有了List<string>
+                            resultDic[eachCheckInfo.strFileName].Add(eachDepInfo.strFileName);
+                        }
+                        else
+                        {
+                            resultDic[eachCheckInfo.strFileName] = new List<string>();
+                            resultDic[eachCheckInfo.strFileName].Add(eachDepInfo.strFileName);
+                        }
+
+
+                        // // 进行Debug输出.
+                        // string strShowTmp = string.Format("{0} refs {1}", eachDepInfo.strFileName,
+                        //     eachCheckInfo.strFileName);
+                        // Console.WriteLine(strShowTmp);
 
                     }
                 }
@@ -96,45 +128,69 @@ namespace FindRefsMulti
             // 把结果写入.
             lock (locker)
             {
+                Dictionary<string, List<string>> outputData = threadData.dicFileDeps;
+
                 // 加锁来处理 其他线程会阻塞住等待.
-                foreach (var eachOutput in findResult)
+                // 把resultDic里的结果导入outputData里.
+                foreach (var threadResultItem in resultDic)
                 {
-                    threadHandleInfo.outputData.Add(eachOutput);
+                    // threadData.outputData.Add(eachOutput);
+
+                    // 判断check项在outputData里是否存在.
+                    string strSaveKey = CommonUtils.GetAssetNameFromPath(threadResultItem.Key, 
+                        CommonUtils.windows2Unity_FS(m_assetPath));
+
+                    if (outputData.ContainsKey(threadResultItem.Key))
+                    {
+                    }
+                    else
+                    {
+                        outputData[strSaveKey] = new List<string>();
+                    }
+
+                    foreach (var eachDep in threadResultItem.Value)
+                    {
+                        // 改变eachDep为一个Asset的值.
+                        string strSaveDep = CommonUtils.GetAssetNameFromPath(eachDep, 
+                            CommonUtils.windows2Unity_FS(m_assetPath));
+                        outputData[strSaveKey].Add(strSaveDep);
+                    }
+
                 }
             }
 
-            string strShow = string.Format("Thread {0} Done", threadHandleInfo.threadName);
+            string strShow = string.Format("Thread {0} Done", threadData.threadName);
             Console.WriteLine(strShow);
 
         }
 
-        /// <summary>
-        /// 进行任务切割.
-        /// </summary>
-        /// <param name="allTasks"></param>
-        /// <param name="bIsLastThread">判断是否是最后一个Thread 返回所有任务.</param>
-        /// <returns></returns>
-        public List<CustomFileInfoCheckFile> CutCheckTasks(Stack<CustomFileInfoCheckFile> allTasks, int nCutNum, bool bIsLastThread)
-        {
-            List<CustomFileInfoCheckFile> lstFileInfo = new List<CustomFileInfoCheckFile>();
-
-            if (bIsLastThread)
-            {
-                // 如果是最后一个线程 直接把剩余的allTasks返回为lstFileInfo
-                lstFileInfo = allTasks.ToList();
-            }
-            else
-            {
-                // push出的个数
-                for (int i = 0; i < nCutNum; i++)
-                {
-                    lstFileInfo.Add(allTasks.Pop());
-                }
-
-            }
-
-            return lstFileInfo;
-        }
+        // /// <summary>
+        // /// 进行任务切割.
+        // /// </summary>
+        // /// <param name="allTasks"></param>
+        // /// <param name="bIsLastThread">判断是否是最后一个Thread 返回所有任务.</param>
+        // /// <returns></returns>
+        // public List<CustomFileInfoCheckFile> CutCheckTasks(Stack<CustomFileInfoCheckFile> allTasks, int nCutNum, bool bIsLastThread)
+        // {
+        //     List<CustomFileInfoCheckFile> lstFileInfo = new List<CustomFileInfoCheckFile>();
+        //
+        //     if (bIsLastThread)
+        //     {
+        //         // 如果是最后一个线程 直接把剩余的allTasks返回为lstFileInfo
+        //         lstFileInfo = allTasks.ToList();
+        //     }
+        //     else
+        //     {
+        //         // push出的个数
+        //         for (int i = 0; i < nCutNum; i++)
+        //         {
+        //             lstFileInfo.Add(allTasks.Pop());
+        //         }
+        //
+        //     }
+        //
+        //     return lstFileInfo;
+        // }
 
         /// <summary>
         /// 进行任务切割.
@@ -363,7 +419,7 @@ namespace FindRefsMulti
 
 
             int cutDepNum = m_stackDepFileInfos.Count / nThreadNum;
-            int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
+            // int cutCheckNum = m_stackCheckFileInfos.Count / nThreadNum;
 
             for (int i = 0; i < nThreadNum; i++)
             {
@@ -375,13 +431,11 @@ namespace FindRefsMulti
 
                 // 进行切割.
                 // threadHandleInfo.inputCheckData = CutCheckTasks(m_stackCheckFileInfos, cutCheckNum, isLastThread);
-
                 // 这里做个深度拷贝 为每个线程准备一个额外的inputCheckData.
                 threadHandleInfo.inputCheckData = m_stackCheckFileInfos.ToList();
 
 
-
-                threadHandleInfo.outputData = m_lstResults;
+                threadHandleInfo.dicFileDeps = m_assetFileRef.dicAssetFileRefs;
                 threadHandleInfo.inputDepData = CutDepTasks(m_stackDepFileInfos, cutDepNum, isLastThread);
                 eachThread.Start(threadHandleInfo);
             }
@@ -396,13 +450,18 @@ namespace FindRefsMulti
             // 打印出结果.
 
             // m_lstResults
-            foreach (var eachResult in m_lstResults)
-            {
-                Console.WriteLine("FileName = " + eachResult);
-            }
+            Console.WriteLine("Check Result");
+
+            // 直接把对象序列化为字符串.
+
+            string strResult = JsonConvert.SerializeObject(m_assetFileRef.dicAssetFileRefs, Formatting.Indented);
+            CommonUtils.WriteFile(@"D:\fileDepsJson.json", strResult);
 
 
-           
+
+
+
+
 
         }
 
