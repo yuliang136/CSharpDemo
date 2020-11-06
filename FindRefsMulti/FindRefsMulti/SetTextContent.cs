@@ -35,6 +35,36 @@ namespace FindRefsMulti
             m_ThreadNum = nThreadNum;
         }
 
+        public void SetTextOverflow()
+        {
+            foreach (var eachFile in m_findFilesPath)
+            {
+                // Console.WriteLine(eachFile);
+                SetFileOverflow(eachFile);
+            }
+        }
+
+        /// <summary>
+        /// 设置单个文件的
+        /// </summary>
+        /// <param name="strFilePath"></param>
+        public void SetFileOverflow(string strFilePath)
+        {
+            // 按行读取文件?
+            string strFileContent = File.ReadAllText(strFilePath);
+
+            // 读取整个文件 进行字符串替换.
+            string strNewFileContent = strFileContent.Replace("m_HorizontalOverflow: 0", "m_HorizontalOverflow: 1");
+            strNewFileContent = strNewFileContent.Replace("m_VerticalOverflow: 0", "m_VerticalOverflow: 1");
+
+
+
+            // 再把内容写回原文件.
+            File.WriteAllText(strFilePath, strNewFileContent);
+
+        }
+
+
 
         /// <summary>
         /// 查找满足条件的Prefab并进行输出.
