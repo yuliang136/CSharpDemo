@@ -63,7 +63,7 @@ namespace FindRefsMulti
         {
             string strUnityFS = windows2Unity_FS(fileName).ToLower();
 
-            string strAssetPath = strUnityFS.Replace(strDataPath.ToLower(), "assets");
+            string strAssetPath = strUnityFS.Replace(windows2Unity_FS(strDataPath).ToLower(), "assets");
 
             return strAssetPath;
         }
