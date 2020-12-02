@@ -12,12 +12,17 @@ namespace FindRefsMulti
         static void Main(string[] args)
         {
             // 测试FindRefWithMulti
-            TestFindRefWithMulti.Run();
+            // TestFindRefWithMulti.Run();
 
             // TestSetTextContent.Run();
 
 
             // Console.ReadKey();
+
+
+            // 查看meta文件.
+            AnalyzeABInMeta analyzeABInMeta = new AnalyzeABInMeta();
+            analyzeABInMeta.Run();
 
         }
     }
