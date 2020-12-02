@@ -13,18 +13,18 @@ namespace FindRefsMulti
             StopWatchUtils.WatchStopInit();
             // 取得Assets目录.
             string strCheckFilesPath = @"C:\svnWorks\android142_cjp_pack\Assets";
-            string[] checkFiles = Directory.GetFiles(strCheckFilesPath, "*.prefab", SearchOption.AllDirectories);
+            string[] checkFiles = Directory.GetFiles(strCheckFilesPath, "*.unity", SearchOption.AllDirectories);
             List<string> totalLst = checkFiles.ToList();                             // Check文件列表
 
             // 筛选出特定Prefab.
-            List<string> lstUseCheckFiles = new List<string>();
-            foreach (var eachPrefabFile in totalLst)
-            {
-                if (eachPrefabFile.ToLower().Contains("shoppanel"))
-                {
-                    lstUseCheckFiles.Add(eachPrefabFile);
-                }
-            }
+            // List<string> lstUseCheckFiles = new List<string>();
+            // foreach (var eachPrefabFile in totalLst)
+            // {
+            //     if (eachPrefabFile.ToLower().Contains("shoppanel"))
+            //     {
+            //         lstUseCheckFiles.Add(eachPrefabFile);
+            //     }
+            // }
 
 
 
@@ -38,7 +38,7 @@ namespace FindRefsMulti
 
             SetTextContent setTextContent = new SetTextContent(
                 strDepFilesPath,
-                lstUseCheckFiles,
+                totalLst,
                 strOutputFilePath,
                 strUnityAssetPath,
                 nThreadNum);

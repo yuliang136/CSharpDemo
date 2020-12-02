@@ -11,10 +11,10 @@ namespace FindRefsMulti
     {
         static void Main(string[] args)
         {
-            // // 测试FindRefWithMulti
-            // TestFindRefWithMulti.FindPrefabWithText();
+            // 测试FindRefWithMulti
+            TestFindRefWithMulti.Run();
 
-            TestSetTextContent.Run();
+            // TestSetTextContent.Run();
 
 
             // Console.ReadKey();

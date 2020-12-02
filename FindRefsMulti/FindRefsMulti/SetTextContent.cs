@@ -37,10 +37,18 @@ namespace FindRefsMulti
 
         public void SetTextOverflow()
         {
+            int nFileTotal = m_findFilesPath.Count;
+            int nIndex = 0;
+            string strShowInfo = string.Empty;
+
             foreach (var eachFile in m_findFilesPath)
             {
                 // Console.WriteLine(eachFile);
                 SetFileOverflow(eachFile);
+
+                nIndex++;
+                strShowInfo = string.Format("Handle {0}/{1}", nIndex.ToString(), nFileTotal.ToString());
+                Console.WriteLine(strShowInfo);
             }
         }
 
