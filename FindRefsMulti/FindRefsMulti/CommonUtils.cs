@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FindRefsMulti
 {
+    /// <summary>
+    /// 通用工具类.
+    /// </summary>
     public static class CommonUtils
     {
         #region Unity资源操作

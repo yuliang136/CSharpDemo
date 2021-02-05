@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FindRefsMulti
 {
+    /// <summary>
+    /// 分析工具类.
+    /// </summary>
     public static class AnalyzeTools
     {
         // 检查文件后缀名.

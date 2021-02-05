@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace FindRefsMulti
 {
+    /// <summary>
+    /// 多线程查找资源引用依赖关系.
+    /// </summary>
     public class FindRefWithMulti
     {
         private string m_DepFilesPath;              // 指定的依赖文件查找目录.

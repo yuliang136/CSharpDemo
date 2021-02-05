@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace FindRefsMulti
 {
+    /// <summary>
+    /// 通过meta文件 分析AB名称.
+    /// </summary>
     public class AnalyzeABInMeta
     {
         [Serializable]

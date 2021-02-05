@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
+/// <summary>
+/// 通过meta文件来设置数据 节约时间.
+/// </summary>
 namespace FindRefsMulti
 {
     public class SetTextContent

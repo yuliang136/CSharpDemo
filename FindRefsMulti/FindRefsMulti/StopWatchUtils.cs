@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FindRefsMulti
 {
+    /// <summary>
+    /// 计时通用类.
+    /// </summary>
     public static class StopWatchUtils
     {
         public static Stopwatch m_stopWatch = null;     // 提供记时通用方法.
