@@ -21,12 +21,12 @@ namespace FindRefsMulti
 
 
             // 查看meta文件.
-            // AnalyzeABInMeta analyzeABInMeta = new AnalyzeABInMeta();
-            // analyzeABInMeta.Run();
+            AnalyzeABInMeta analyzeABInMeta = new AnalyzeABInMeta();
+            analyzeABInMeta.Run();
 
 
             // 查找引用.
-            AnalyzeTools.CheckDepByGuid(@"C:\gitWorks\triplewin_ios\Assets");
+            // AnalyzeTools.CheckDepByGuid(@"C:\gitWorks\triplewin_ios\Assets");
 
 
         }

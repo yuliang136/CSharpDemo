@@ -12,13 +12,13 @@ namespace FindRefsMulti
         {
             StopWatchUtils.WatchStopInit();
             // 取得Assets目录.
-            string strCheckFilesPath = @"C:\svnWorks\ios145_pack\Assets";
+            string strCheckFilesPath = @"C:\gitWorks\triplewin_ios\Assets\LuaPrefab\Font";
             string[] checkFiles = Directory.GetFiles(strCheckFilesPath, "*.*", SearchOption.AllDirectories);
             List<string> totalLst = checkFiles.ToList();                            // Check文件列表
-            string strDepFilesPath = @"C:\svnWorks\ios145_pack\Assets";      // Dep文件查找目录.
-            string strUnityAssetPath = @"C:\svnWorks\ios145_pack\Assets";    // Unity Assets固定目录.
-            string strOutputFilePath = @"D:\check_ios145.json";         // 输出文件名字
-            int nThreadNum = 200;
+            string strDepFilesPath = @"C:\gitWorks\triplewin_ios\Assets";      // Dep文件查找目录.
+            string strUnityAssetPath = @"C:\gitWorks\triplewin_ios\Assets";    // Unity Assets固定目录.
+            string strOutputFilePath = @"D:\font_check.json";         // 输出文件名字
+            int nThreadNum = 1;
 
 
             FindRefWithMulti findRefWithMulti = new FindRefWithMulti(

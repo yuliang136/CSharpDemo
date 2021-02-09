@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace FindRefsMulti
 {
     /// <summary>
-    /// 通过meta文件 分析AB名称.
+    /// 扫描Assets目录 输出所有的AB名字设置 通过meta文件 分析AB名称.
     /// </summary>
     public class AnalyzeABInMeta
     {
