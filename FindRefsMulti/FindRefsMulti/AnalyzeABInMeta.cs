@@ -28,7 +28,7 @@ namespace FindRefsMulti
 
 
             // 读取Unity目录.
-            string strUnityAssetData = @"C:\gitWorks\triplewin_ios";
+            string strUnityAssetData = @"C:\svnWorks\android151_cjp";
 
             DirectoryInfo diAssetData = new DirectoryInfo(strUnityAssetData);
             FileInfo[] metaFiles = diAssetData.GetFiles("*.meta", SearchOption.AllDirectories);
